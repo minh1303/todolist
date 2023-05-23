@@ -1,0 +1,20 @@
+.todo {
+    padding: 0;
+    border: 3px solid white;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 20px;
+
+}
+
+.todo p {
+    padding: 0;
+    margin: 0;
+}

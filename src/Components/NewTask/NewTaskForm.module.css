@@ -1,0 +1,12 @@
+.container {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border-radius: 10px;
+    color: white;
+    padding: 1rem;
+    gap: 1rem;
+    background-color: blueviolet;
+}
