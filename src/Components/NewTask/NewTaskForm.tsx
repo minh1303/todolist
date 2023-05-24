@@ -8,13 +8,23 @@ const NewTaskForm = ({ onTaskChange }: { onTaskChange: CallableFunction }) => {
     if (title === "") return alert("You have to input title");
     if (description === "") return alert("You have to input description");
 
-    onTaskChange((state: {
-      id: number;
-      title: string;
-      description: string;
-  }[]) => {
-        return state.concat({id: state[state.length - 1] ? state[state.length - 1].id + 1 : 1,title: title, description:description})
-    })
+    onTaskChange(
+      (
+        state: {
+          id: number;
+          title: string;
+          description: string;
+        }[]
+      ) => {
+        const tasks = state.concat({
+          id: state[state.length - 1] ? state[state.length - 1].id + 1 : 1,
+          title: title,
+          description: description,
+        });
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        return tasks;
+      }
+    );
   };
 
   const onTitleChange = (e: React.FormEvent<HTMLInputElement>) => {

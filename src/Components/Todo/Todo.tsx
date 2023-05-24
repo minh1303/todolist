@@ -14,10 +14,13 @@ const Todo = ({
   const [isEditing, setIsEditing] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
+
   const onClick = () => {
     setTasks(
       (state: Array<{ id: number; title: string; description: string }>) => {
-        return state.filter((task) => task.id !== id);
+        const tasks = state.filter((task) => task.id !== id);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        return tasks;
       }
     );
   };
@@ -29,10 +32,13 @@ const Todo = ({
   const onSave = () => {
     setTasks(
       (state: Array<{ id: number; title: string; description: string }>) => {
-        return state.map((task) => {
+        const tasks = state.map((task) => {
           if (task.id !== id) return;
-          return {id,title: newTitle, description: newDescription}
+          return { id, title: newTitle, description: newDescription };
         });
+
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        return tasks;
       }
     );
     setIsEditing(false);
